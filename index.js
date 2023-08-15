@@ -21,13 +21,14 @@ const nameOutput = document.getElementById("name-output");
 const cardNumberOutput = document.getElementById("card-number-output");
 const monthOutput = document.getElementById("month-output");
 const yearOutput = document.getElementById("year-output");
-const cbcOutput = document.getElementById("cvc-output");
+const cvcOutput = document.getElementById("cvc-output");
 
 form.addEventListener("submit", validate);
 confirmBtn.addEventListener("click", validate);
 
-function validate(e) {
-  e.preventDefault();
+const cardRegex = new RegExp("^[0-9]{13,19}$");
+
+function validate() {
   const inputs = document.querySelectorAll("input");
   let validator = true;
   inputs.forEach((input) => {
@@ -36,16 +37,34 @@ function validate(e) {
       input.style.borderColor = "red";
       parent.querySelector("span").innerText = "Can't be blank";
       validator = false;
-    } else if (cardNumberInput.value !== Number) {
-      input.style.borderColor = "red";
-      parent.querySelector("span").innerText = "Wrong format, numbers only";
+    } else if (!cardNumberInput.value.match(cardRegex)) {
+      cardNumberInput.style.borderColor = "red";
+      cardNumberInput.parentElement.querySelector("span").innerText =
+        "Wrong format, numbers only";
       validator = false;
+    } else if (monthInput.value > 12) {
+      monthInput.style.borderColor = "red";
+      monthInput.parentElement.querySelector("span").innerText =
+        "Invalid Month";
+      validator = false;
+    } else if (yearInput.value < 23) {
+      yearInput.style.borderColor = "red";
+      monthInput.parentElement.querySelector("span").innerText = "Invalid Year";
+      validator = false;
+    } else if (cvcInput > 999) {
+      cvcInput.style.borderColor = "red";
+      cvcInput.parentElement.querySelector("span").innerText = "Invalid CVC";
+      validator = false;
+    } else {
+      input.style.borderColor = "inherit";
+      parent.querySelector("span").innerText = "";
+      formContainer.classList.add("hidden");
+      completedContainer.classList.remove("hidden");
+      validator = true;
     }
   });
+  return validator;
 }
-
-formContainer.classList.add("hidden");
-completedContainer.classList.remove("hidden");
 
 continueBtn.addEventListener("click", () => {
   formContainer.classList.remove("hidden");
