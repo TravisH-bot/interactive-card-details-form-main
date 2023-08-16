@@ -30,6 +30,16 @@ body {
   justify-content: center;
 }
 
+.main-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("./images/bg-main-desktop.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 100%;
+}
+
 /* =========================== Cards Container =========================== */
 .cards-container {
   display: flex;
@@ -38,9 +48,6 @@ body {
   justify-content: center;
   width: 50%;
   min-height: 100svh;
-  background-image: url("./images/bg-main-desktop.png");
-  background-size: contain;
-  background-repeat: no-repeat;
 }
 
 .card-front {
@@ -107,7 +114,6 @@ body {
 .form-container {
   width: 50%;
   display: flex;
-  /* display: none; */
   flex-direction: column;
   justify-content: center;
 }
@@ -224,12 +230,6 @@ input:focus {
   box-shadow: none;
 }
 
-/* span {
-  color: var(--red);
-  font-size: 0.8rem;
-  margin: -2.5rem 0 1rem 0;
-} */
-
 .error {
   border: 2px solid var(--red);
 }
@@ -244,6 +244,10 @@ input:focus {
   margin-top: -2.6rem;
   margin-bottom: 1.6rem;
 }
+
+/* form {
+  margin-bottom: 4rem;
+} */
 
 /* =========================== Completed Container =========================== */
 .hidden {
@@ -308,6 +312,11 @@ input:focus {
   box-shadow: none;
 }
 
+/* .attribution {
+  text-align: center;
+  margin-top: 3rem;
+} */
+
 /* =========================== Media Queries =========================== */
 @media screen and (max-width: 768px) {
   body {
@@ -315,12 +324,17 @@ input:focus {
     min-height: auto;
   }
 
+  .main-container {
+    flex-direction: column;
+    background-image: url("./images/bg-main-mobile.png");
+    background-repeat: no-repeat;
+  }
+
   /* =========================== Cards Container =========================== */
   .cards-container {
     width: 100%;
     min-height: 0svh;
-    background-image: url("./images/bg-main-mobile.png");
-    background-repeat: no-repeat;
+
     margin-bottom: -3rem;
   }
 
@@ -416,5 +430,11 @@ input:focus {
 
   .thank-you-container {
     width: 100%;
+  }
+
+  .attribution {
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.9rem;
   }
 }
