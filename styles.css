@@ -130,6 +130,19 @@ input {
   color: var(--dark-grayish-violet);
 }
 
+/* Hiding arrows on number inputs */
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 input:focus {
   background: linear-gradient(#fff 0 0) padding-box,
     linear-gradient(180deg, hsl(249, 99%, 64%) 0%, hsl(278, 94%, 30%) 100%);
@@ -152,7 +165,7 @@ input:focus {
   display: flex;
 }
 
-.error {
+.month-error {
   display: flex;
   flex-direction: column;
 }
@@ -211,10 +224,25 @@ input:focus {
   box-shadow: none;
 }
 
-span {
+/* span {
   color: var(--red);
   font-size: 0.8rem;
   margin: -2.5rem 0 1rem 0;
+} */
+
+.error {
+  border: 2px solid var(--red);
+}
+.error-message {
+  gap: 0;
+  font-size: 0.7rem;
+}
+
+.error-message::after {
+  content: "Cant't be blank";
+  color: var(--red);
+  margin-top: -2.6rem;
+  margin-bottom: 1.6rem;
 }
 
 /* =========================== Completed Container =========================== */
@@ -316,6 +344,10 @@ span {
     font-weight: 500;
     letter-spacing: 0.1rem;
     font-size: 0.7rem;
+  }
+
+  .card-front span {
+    font-size: 0.8rem;
   }
 
   #card-logo {

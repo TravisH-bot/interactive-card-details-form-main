@@ -39,7 +39,9 @@
 
         <div class="inputs">
           <label for="card number">Card Number</label>
-          <input id="card-number" type="text" placeholder="e.g. 1234 5678 9123 0000">
+          <input id="card-number" type="number" placeholder="e.g. 1234 5678 9123 0000"
+            oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+            minlength="16" maxlength="16">
           <span class="card-error"></span>
         </div>
 
@@ -48,18 +50,24 @@
           <div class="inputs">
             <label for="exp">Exp. Date (MM/YY)</label>
             <div class="month-year">
-              <div class="error">
-                <input id="month" type="text" placeholder="MM">
+              <div class="month-error">
+                <input id="month" type="number"
+                  oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                  minlength="2" maxlength="2" placeholder="MM">
                 <span class="date-error"></span>
               </div>
-              <input id="year" type="text" placeholder="YY">
+              <input id="year" type="number"
+                oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                minlength="2" maxlength="2" placeholder="YY">
 
             </div>
           </div>
 
           <div class="inputs">
             <label for="cvc">CVC</label>
-            <input id="cvc" type="text" placeholder="e.g. 123">
+            <input id="cvc" type="number"
+              oninput="if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+              minlength="3" maxlength="3" placeholder="e.g. 123">
             <span class="cvc-error"></span>
           </div>
 
